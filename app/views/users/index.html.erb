@@ -1,56 +1,20 @@
-<h2>User info</h2>
-  
-  
-  
-  
 <h2>Books</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <h1>User info</h1>
-
-<%= form_with model: @book, url:'/books' do |f| %>
-
-  <h4>Name</h4>
-  <%= f.text_field :name %>
   
-  <h4>Image</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-  
-  <h4>Introduction</h4>
-  <%= f.text_area :introduction %>
-  
-  <%= f.submit 'Update User' %>
-  
-<% end %>
-  
-  </tbody>
-</table>
-
-  <h2>New Book</h2>
-  
-  <!--<% if @book.errors.any? %>-->
-  <!--  <%= @book.errors.count %>errors prohibited this obj from being updated:-->
-  <!--  <ul>-->
-  <!--    <% @book.errors.full_messages.each do |message| %>-->
-  <!--      <li><%= message %></li>-->
-  <!--    <% end %>-->
-  <!--  </ul>-->
-  <!--<% end %>-->
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>errors prohibited this obj from being updated:
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   
   <%= form_with model: @book, url: '/books', method: :post do |f| %>
     <h4>Name</h4>
     <%= f.text_field :name %>
     
-    <h4>Image</h4>
-    <%= image_tag @book.user.get_profile_image(100,100) %>
+    <!--<h4>Image</h4>-->
+    <%#= image_tag @book.user.get_profile_image(100,100) %>
     
     <h4>Introduction</h4>
     <%= f.text_area :introduction %>
@@ -58,4 +22,3 @@
     <%= f.submit 'Update User' %>
     
   <% end %>
-</body>
