@@ -9,15 +9,18 @@
             <th>name</th>
           </tr>
         </thead>
-      
+    
       <tbody>
-      <% @Users.each do |user| %>
+      <% @Books.each do |book| %>
         <tr>
           <td>
             <%= image_tag @user.get_profile_image(80,80) %>
           </td>
           <td>
-          <%= link_to user.name, book_path(book.id) %>
+            <%= book.user.name %>
+            <%= link_to book_path(book.id) do %>
+            <%= image_tag book.get_image %>
+            <% end %>
           </td>
           <td>
           <span>

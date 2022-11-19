@@ -11,8 +11,7 @@
                 <%= f.text_field :title %>
               <h4>Opinion</h4>
                 <%= f.text_area :body %>
-                <%= link_to book_path(@book.id), class: "btn btn-success" do %>Update Book
-                <% end %>
+                <%= f.submit class: "btn btn-secondary" %>
               <div>
                 <%= link_to "Show", book_path(@book.id) %>
                   <a href='/books'>Back</a>

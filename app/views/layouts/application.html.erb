@@ -9,7 +9,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
+
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,43 +24,43 @@
                 <li>
                   <%= link_to root_path(current_user), class: "nav-link text-light" do %>
                   <i class="fas fa-home" %></i>Home
-                  <% end %> 
+                  <% end %>
                 </li>
                 <li>
                   <%= link_to users_path(current_user), class: "nav-link text-light" do %>
                   <i class="fas fa-users"></i>Users
-                  <% end %>  
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to books_path(current_user), class: "nav-link text-light" do %>
+                  <%= link_to books_path, class: "nav-link text-light" do %>
                   <i class="fas fa-book-open"></i>Books
-                <% end %> 
+                <% end %>
                 </li>
                 <li>
                   <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
                 <i class="fas fa-sign-out-alt"></i>Log out
-                  <% end %>  
+                  <% end %>
                 </li>
               <% else %>
                 <li>
                   <%= link_to root_path, class: "nav-link text-light" do %>
                   <i class="fas fa-home" %></i>Home
-                  <% end %> 
+                  <% end %>
                 </li>
                 <li>
                   <%= link_to about_path, class: "nav-link text-light" do %>
                   <i class="fas fa-link"></i>About
-                  <% end %>  
+                  <% end %>
                 </li>
                 <li>
                   <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
                   <i class="fas fa-user-plus"></i>Sign Up
-                  <% end %> 
+                  <% end %>
                 </li>
                 <li>
                   <%= link_to new_user_session_path, class: "nav-link text-light" do %>
                   <i class="fas fa-sign-in-alt"></i>Log in
-                  <% end %>  
+                  <% end %>
                 </li>
               <% end %>
             </ul>
@@ -79,7 +79,7 @@
         	</div>
         </div>
       </div>
-    </footer>  
+    </footer>
   </body>
 
 </html>
