@@ -3,27 +3,40 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-          
+
           <h2>User info</h2>
+
+          <% if @user.errors.any? %>
+          <h3><%= @user.errors.count %>errors prohibited this obj from being saved:</h3>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+          </ul>
+          <% end %>
 
           <%= form_with model: @user do |f| %>
 
-            <h6>Name</h6>
-            
-            <%= f.text_field :name %>
+            <div class="form-group">
+              <label for="user_name">Name</label>
+              <%= f.text_field :name, class: "form-control name" %>
+            </div>
 
-            <h6>Image</h6>
-            <%= f.file_field :profile_image, accept: "image/*" %>
-            <% if @user == current_user %>
-            <% end %>
+            <div class="form-group">
+              <label for="profile_image">Image</label>
+              <%= f.file_field :profile_image, accept: "image/*", class: "form-control-file user_image" %>
+              <% if @user == current_user %>
+              <% end %>
 
-            <h6>Introduction</h6>
-            <%= f.text_area :introduction %>
-            
+            </div>
+
+            <div class="form-group">
+              <label for="user_introduction">Introduction</label>
+              <%= f.text_area :introduction, class: "form-control introduction" %>
+            </div>
+
             <%= f.submit class: "btn btn-secondary" %>
-
           <% end %>
-
         </div>
       </div>
     </div>

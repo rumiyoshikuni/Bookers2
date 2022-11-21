@@ -4,16 +4,16 @@ class BooksController < ApplicationController
   before_action :ensure_correct_user, only:[:edit]
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    @user = current_user
-    @books = @user.books
-  if @book.save
-      flash[:notice]="You have created book successfully."
-      redirect_to book_path(@book.id)
-  else
-      render :index
-  end
+      @book = Book.new(book_params)
+      @book.user_id = current_user.id
+    if @book.save
+        flash[:notice]="You have created book successfully."
+        redirect_to book_path(@book.id)
+    else
+      @user = current_user
+      @books = Book.all
+        render :index
+    end
   end
 
   def index
@@ -57,8 +57,9 @@ class BooksController < ApplicationController
 
   def ensure_correct_user
     @book = Book.find(params[:id])
+    @user = @book.user
     unless @book.user == current_user
-      redirect_to user_path
+      redirect_to (books_path) unless @user == current_user
     end
   end
 

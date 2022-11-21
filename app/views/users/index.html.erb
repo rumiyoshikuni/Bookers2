@@ -1,7 +1,14 @@
-<%= render 'books/list', book: @book, user: @user %>
-
-<h2>Users</h2>
-  <table class="table">
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'books/list', book: @book, user: @user %>
+    </div>
+    
+    <div class="col-md-8 offset-md-1">
+      
+      <h2>Users</h2>
+      <table class="table">
         <thead>
           <tr>
             <th></th>
@@ -9,25 +16,24 @@
             <th>image</th>
           </tr>
         </thead>
-
-      <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td>
-            <%= image_tag user.get_profile_image(80,80) %>
-          </td>
-          <td>
-            <%= user.name %>
-          </td>
-          <td>
-          <span>
-            <%= link_to "Show", user_path(user.id) %>
-          </span>
-          </td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= image_tag user.get_profile_image(80,80) %>
+              </td>
+              <td>
+                <%= user.name %>
+              </td>
+              <td> <span>
+                  <%= link_to "Show", user_path(user.id) %>
+                </span> </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+    
     </div>
+    
   </div>
 </div>

@@ -11,11 +11,6 @@
   </head>
 
   <body>
-    
-    <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -27,7 +22,7 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li>
-                  <%= link_to root_path(current_user), class: "nav-link text-light" do %>
+                  <%= link_to user_path(current_user), class: "nav-link text-light" do %>
                   <i class="fas fa-home" %></i>Home
                   <% end %>
                 </li>
@@ -59,7 +54,7 @@
                 </li>
                 <li>
                   <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
-                  <i class="fas fa-user-plus"></i>Sign Up
+                  <i class="fas fa-user-plus"></i>Sign up
                   <% end %>
                 </li>
                 <li>
@@ -73,18 +68,23 @@
         </div>
       </nav>
 </header>
-    <main>
-      <%= yield %>
-    </main>
-    <footer>
-      <div class="container mt-5">
-      	<div class="row">
-        	<div class="mx-auto">
-        		<p>CopyRight Infratop.inc</p>
-        	</div>
+</div>
+<main>
+  
+  <div>
+  <%= flash[:notice] %>
+  <%= flash[:success] %>
+  </div>
+<%= yield %>
+</main>
+  <footer>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="mx-auto">
+        	<p>CopyRight Infratop.inc</p>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
   </body>
-
 </html>

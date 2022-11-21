@@ -1,8 +1,3 @@
-<p id="notice"></p>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3">
-
       <h2>User info</h2>
       <p><%= image_tag user.get_profile_image(100,100) %></p>
         <table class="table">
@@ -19,20 +14,17 @@
               </td>
           </tr>
         </table>
-        <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+        <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
         <i class="fas fa-user-cog" %></i>
         <% end %>
 
-        <h2>New Book</h2>
-        
-        <%= form_with model: book do |f| %>
+        <h2>New book</h2>
+
+        <%= form_with model: book, local: true do |f| %>
+
           <h6>Title</h6>
             <%= f.text_field :title %>
           <h6>Opinion</h6>
             <%= f.text_area :body %>
             <%= f.submit class: "btn btn-success" %>
         <% end %>
-        
-    </div>
-    
-    <div class="col-lg-8">

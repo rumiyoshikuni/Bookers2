@@ -15,10 +15,10 @@
 
           <div class="btn-wrapper col-10 mx-auto">
             <div class="row">
-              <%= link_to new_user_session_path(@book_user), class: "btn btn-info btn-block btn-sm" do %>Log in
-              <% end %>
-              <%= link_to new_user_registration_path(@book_user), class: "btn btn-success btn-block btn-sm" do %>Sign up
-              <% end %>
+              <%= link_to "Log in", new_user_session_path(@book_user), class: "btn btn-info btn-block btn-sm" %>
+             
+              <%= link_to "Sign up", new_user_registration_path(@book_user), class: "btn btn-success btn-block btn-sm" %>
+          
             </div>
           </div>
         </div>

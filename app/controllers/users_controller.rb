@@ -8,16 +8,16 @@ class UsersController < ApplicationController
     @books = @user.books
     @book = Book.new
   end
-  
-  
-
 
   def create
     @user = User.new(user_params)
     @user.user_id = current_user.id
-    @user.save
     if @user.save
-      redirect_to root_path, success: "Welcome! You have signed up successfully."
+      sign_up @user
+      flash[:notice]="Welcome! You have signed up successfully."
+      log_in @user
+      flash[:success]="Signed in successfully."
+      redirect_to root_path
     else
       render :index
     end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "You have updated user succeessfully."
+      flash[:notice]="You have updated user successfully."
       redirect_to user_path(@user)
     else
       render :edit
